@@ -9,7 +9,7 @@
 <ion-content>
 
     <!-- <ion-searchbar placeholder="Procure por artista ou música" [formControl]="search"> </ion-searchbar> -->
-    <ion-auto-complete [dataProvider]="youtube"></ion-auto-complete>
+    <ion-auto-complete (itemSelected)="onSelect($event)" [dataProvider]="youtube"></ion-auto-complete>
 
     <ion-content class="cards-bg">
         <ion-card *ngFor="let video of results">
