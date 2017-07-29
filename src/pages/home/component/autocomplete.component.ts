@@ -164,6 +164,7 @@ export class AutoCompleteComponent {
         ? selection : selection[this.dataProvider.labelAttribute];
     
     if(this.hideListOnSelection) {
+      
       this.hideItemList();
     }
 
