@@ -163,8 +163,7 @@ export class AutoCompleteComponent {
     this.keyword = this.dataProvider.labelAttribute == null || selection[this.dataProvider.labelAttribute] == null
         ? selection : selection[this.dataProvider.labelAttribute];
     
-    if(this.hideListOnSelection) {
-      
+    if(this.hideListOnSelection) {      
       this.hideItemList();
     }
 
