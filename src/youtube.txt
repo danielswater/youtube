@@ -1,0 +1,81 @@
+{
+ "kind": "youtube#videoListResponse",
+ "etag": "\"dhbhlDw5j8dK10GxeV_UG6RSReM/kvqkY8X2aXhk-O8BnczihZb8PG8\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"dhbhlDw5j8dK10GxeV_UG6RSReM/ZCKauTkB1Y03qtXLwyD0nf4m7gY\"",
+   "id": "qzaBVoti3U0",
+   "snippet": {
+    "publishedAt": "2015-03-17T01:44:05.000Z",
+    "channelId": "UC4yfiEBmRDMyk4LuJH7Ckzg",
+    "title": "Road Rash 3DO - Level 1 Completo",
+    "description": "►REVIEW no Memória BIT http://wp.me/p4n6ZH-2eu ◄\n\nRoad Rash era show de diversão no Mega Drive e a versão 3DO não mudou isto em nada. Confira o gameplay completo do Level 1, incluindo intro e algumas cenas intermediárias. \nControle: Daniel Lemes\n*****\nRoad Rash was pure fun on Sega Genesis, so as the 3DO version. Check out this gameplay including full Level 1, intro and some cutscenes. \nControls: Daniel Lemes.\n\n\n©  1994 Electronic Arts - ALL RIGHTS RESERVED\n© 1991-1994 A&M Records - ALL RIGHTS RESERVED",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/qzaBVoti3U0/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/qzaBVoti3U0/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/qzaBVoti3U0/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/qzaBVoti3U0/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/qzaBVoti3U0/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "Memória BIT",
+    "categoryId": "20",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Road Rash 3DO - Level 1 Completo",
+     "description": "►REVIEW no Memória BIT http://wp.me/p4n6ZH-2eu ◄\n\nRoad Rash era show de diversão no Mega Drive e a versão 3DO não mudou isto em nada. Confira o gameplay completo do Level 1, incluindo intro e algumas cenas intermediárias. \nControle: Daniel Lemes\n*****\nRoad Rash was pure fun on Sega Genesis, so as the 3DO version. Check out this gameplay including full Level 1, intro and some cutscenes. \nControls: Daniel Lemes.\n\n\n©  1994 Electronic Arts - ALL RIGHTS RESERVED\n© 1991-1994 A&M Records - ALL RIGHTS RESERVED"
+    }
+   },
+   "contentDetails": {
+    "duration": "PT24M47S",
+    "dimension": "2d",
+    "definition": "hd",
+    "caption": "false",
+    "licensedContent": false,
+    "regionRestriction": {
+     "blocked": [
+      "DE"
+     ]
+    }
+   },
+   "status": {
+    "uploadStatus": "processed",
+    "privacyStatus": "public",
+    "license": "youtube",
+    "embeddable": true,
+    "publicStatsViewable": true
+   },
+   "statistics": {
+    "viewCount": "48",
+    "likeCount": "1",
+    "dislikeCount": "0",
+    "favoriteCount": "0",
+    "commentCount": "2"
+   }
+  }
+ ]
+}
