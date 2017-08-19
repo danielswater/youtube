@@ -14,33 +14,36 @@ import 'rxjs/Rx';
 
 
 export class HomePage {
-
+	
 	search = new FormControl();
 	results: Observable<any>;
 	public item: boolean;
 	private _video = new YoutubePlayer();
+	private link = "//www.youtubeinmp3.com/fetch/?video=https://www.youtube.com/watch?v=";	
 	
 	constructor(public navCtrl: NavController, public youtube: YoutubeService) {
 		this.results =
-		 this.search.valueChanges
-		   .debounceTime(200) //debounce for 200ms
-		   .switchMap(query => youtube.search(query));
+		this.search.valueChanges
+		.debounceTime(200) //debounce for 200ms
+		.switchMap(query => youtube.search(query));
 	}
-
+	
 	keyPress(ev){
 		this.item = true;
 	}
-
+	
 	selecionarVideo(video){
 		this.item = false;
 		this._video.player = video.id.videoId;
 		this._video.titulo = video.snippet.title;
 		this._video.descricao = video.snippet.description;
 		console.log(video)
-		// this.player = video.id.videoId;
-		// console.log(this.player)
 	}
-
+	
+	download(){
+		
+	}
+	
 	fecharBusca(){
 		this.item = false;
 	}
