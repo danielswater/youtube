@@ -27,7 +27,5 @@ export class HomePage {
 	selectedItem(item){
 		console.log('item', item)
 	}
-	onCancel(event){
-		console.log('fechar')
-	}
+	
 }
