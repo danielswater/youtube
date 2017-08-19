@@ -122,7 +122,7 @@ export class AutoCompleteComponent {
     if (result instanceof Observable) {
       result
           .subscribe(
-              (results: any) => {
+              (results: any) => {                
                 this.suggestions = results;
                 this.showItemList();
               },

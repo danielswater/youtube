@@ -24,6 +24,7 @@
     "@ionic-native/splash-screen": "3.12.1",
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "2.0.1",
+    "@ngui/auto-complete": "^0.13.6",
     "cordova-ios": "^4.4.0",
     "cordova-plugin-console": "^1.0.5",
     "cordova-plugin-device": "^1.1.4",
@@ -40,7 +41,7 @@
   "devDependencies": {
     "@ionic/app-scripts": "2.0.2",
     "@ionic/cli-plugin-cordova": "1.4.1",
-    "@ionic/cli-plugin-ionic-angular": "1.4.0",
+    "@ionic/cli-plugin-ionic-angular": "1.4.1",
     "typescript": "2.3.4"
   },
   "description": "An Ionic project",

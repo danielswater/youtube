@@ -11,6 +11,6 @@ export class BoldPrefix implements PipeTransform {
     transform(value: string, keyword: string): any {
         if (!keyword) return '';
         let escaped_keyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        return value.replace(new RegExp(escaped_keyword, 'gi'), function(str) { return str.bold(); });
+        return value.replace(escaped_keyword, function(str) { return str.bold(); });
     }
 }
