@@ -8,45 +8,35 @@
 
 <ion-content>
     
-    <ion-searchbar placeholder="Procure por artista ou música" [formControl]="search" > </ion-searchbar>
-    <ion-item *ngFor="let video of results | async" (click)="selectedItem(video)">
+    <ion-searchbar (keypress)="keyPress($event)" placeholder="Procure por artista ou música" [formControl]="search" (ionClear)="fecharBusca()"> </ion-searchbar>
+    
+    <div *ngIf="item" >
+        <ion-item *ngFor="let video of results | async" (click)="selecionarVideo(video)">
             <ion-label>{{video.snippet.title}}</ion-label>
-    </ion-item>
-    <!-- <ion-content class="cards-bg">
-        <ion-card *ngFor="let video of results | async">
-            <img src="{{video.snippet.thumbnails.high.url}}" />
-            <iframe width="100%" frameborder="0" height="150" [src]="('https://www.youtube.com/embed/' + video.id.videoId) | safe"></iframe>
+        </ion-item>
+    </div>
+    
+    <ion-content class="cards-bg">
+        <ion-card>
+            <iframe width="100%" frameborder="0" height="185" [src]="('https://www.youtube.com/embed/' + _video.player) | safe"></iframe>
             
             <ion-card-content>
                 <ion-card-title>
-                    {{video.snippet.title}}
+                    {{_video.titulo}}
                 </ion-card-title>
                 <p>
-                    The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+                    {{_video.descricao}}
                 </p>
             </ion-card-content>
-            <ion-row no-padding>
-                <ion-col>
-                    <button ion-button clear small color="danger" icon-start>
-                        <ion-icon name='star'></ion-icon>
-                        Vídeo          
-                    </button>
-                    <button ion-button icon-start round>
-                        <ion-icon name="star"></ion-icon>
-                        Vídeo
-                    </button>
-                </ion-col>
+            <ion-row no-padding>                
                 <ion-col text-center>
-                    <button ion-button clear small color="danger" icon-start>
-                        <ion-icon name='musical-notes'></ion-icon>
-                        MP4          
-                    </button>
-                    <button ion-button icon-start round>
+                    
+                    <button ion-button icon-start full>
                         <ion-icon name="musical-notes"></ion-icon>
-                        MP4
+                        Download MP4
                     </button>
                 </ion-col>
             </ion-row>
         </ion-card>
-    </ion-content> -->
+    </ion-content>
 </ion-content>
