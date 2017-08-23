@@ -3,9 +3,10 @@ import { Observable } from 'rxjs/Observable';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { YoutubeService } from './youtube';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform, AlertController } from 'ionic-angular';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 import 'rxjs/Rx';
-
 
 @Component({
 	selector: 'page-home',
@@ -19,9 +20,10 @@ export class HomePage {
 	results: Observable<any>;
 	public item: boolean;
 	private _video = new YoutubePlayer();
-	private link = "//www.youtubeinmp3.com/fetch/?video=https://www.youtube.com/watch?v=";	
+	private link = "https://www.youtubeinmp3.com/fetch/?video=https://www.youtube.com/watch?v=";
+	//https://www.youtubeinmp3.com/fetch/?video=https://www.youtube.com/watch?v=YouTube-Video-ID	
 	
-	constructor(public navCtrl: NavController, public youtube: YoutubeService) {
+	constructor(public platform: Platform, public alertCtrl: AlertController, public navCtrl: NavController, public youtube: YoutubeService, private file: File, private transfer: FileTransfer) {		
 		this.results =
 		this.search.valueChanges
 		.debounceTime(200) //debounce for 200ms
@@ -40,8 +42,14 @@ export class HomePage {
 		console.log(video)
 	}
 	
-	download(){
-		
+	download(){		
+		const fileTransfer: FileTransferObject = this.transfer.create();
+		fileTransfer.download(this.link+this._video.player, this.file.dataDirectory + 'file.mp3').then((entry) => {
+			console.log('download complete: ' + entry.toURL());
+		  }, (error) => {
+			  console.log(error)
+			// handle error
+		  });
 	}
 	
 	fecharBusca(){

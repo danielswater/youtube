@@ -9,6 +9,8 @@ import { NguiAutoCompleteModule } from '@ngui/auto-complete'
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SafePipe } from '../pages/home/safe.pipe';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { SafePipe } from '../pages/home/safe.pipe';
   ],
   providers: [
     StatusBar,
+    File,
+    FileTransfer,
     YoutubeService,
     SplashScreen,
     HttpModule,
