@@ -8,6 +8,8 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { File } from '@ionic-native/file';
 import 'rxjs/Rx';
 
+declare var cordova: any;
+
 @Component({
 	selector: 'page-home',
 	templateUrl: 'home.html'
@@ -15,44 +17,62 @@ import 'rxjs/Rx';
 
 
 export class HomePage {
-	
+
 	search = new FormControl();
 	results: Observable<any>;
 	public item: boolean;
 	private _video = new YoutubePlayer();
 	private link = "https://www.youtubeinmp3.com/fetch/?video=https://www.youtube.com/watch?v=";
-	//https://www.youtubeinmp3.com/fetch/?video=https://www.youtube.com/watch?v=YouTube-Video-ID	
-	
-	constructor(public platform: Platform, public alertCtrl: AlertController, public navCtrl: NavController, public youtube: YoutubeService, private file: File, private transfer: FileTransfer) {		
+	storageDirectory: string = '';
+
+	constructor(public platform: Platform, public alertCtrl: AlertController,
+		public navCtrl: NavController, public youtube: YoutubeService,
+		private file: File, private transfer: FileTransfer) {
 		this.results =
-		this.search.valueChanges
-		.debounceTime(200) //debounce for 200ms
-		.switchMap(query => youtube.search(query));
+			this.search.valueChanges
+				.debounceTime(200)
+				.switchMap(query => youtube.search(query));
 	}
-	
-	keyPress(ev){
+
+	keyPress(ev) {
 		this.item = true;
 	}
-	
-	selecionarVideo(video){
+
+	selecionarVideo(video) {
 		this.item = false;
 		this._video.player = video.id.videoId;
 		this._video.titulo = video.snippet.title;
 		this._video.descricao = video.snippet.description;
 		console.log(video)
 	}
-	
-	download(){		
+
+	download() {
+
 		const fileTransfer: FileTransferObject = this.transfer.create();
-		fileTransfer.download(this.link+this._video.player, this.file.dataDirectory + 'file.mp3').then((entry) => {
-			console.log('download complete: ' + entry.toURL());
-		  }, (error) => {
-			  console.log(error)
-			// handle error
-		  });
+		fileTransfer.download(this.link + this._video.player, this.file.dataDirectory + 'file.mp3').then((entry) => {
+			let alertSuccess = this.alertCtrl.create({
+				title: `Download Concluído!`,
+				subTitle: `$file was successfully downloaded to: ${entry.toURL()}`,
+				buttons: ['Ok']
+			});
+
+			alertSuccess.present();
+
+			console.log(entry.toURL())
+
+		}, (error) => {
+			let alertFailure = this.alertCtrl.create({
+				title: `Download Failed!`,
+				subTitle: `file was not successfully downloaded. Error code: ${error.code}`,
+				buttons: ['Ok']
+			});
+
+			alertFailure.present();
+		});
+		
 	}
-	
-	fecharBusca(){
+
+	fecharBusca() {
 		this.item = false;
 	}
 }
