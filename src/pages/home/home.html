@@ -12,13 +12,13 @@
 
     <ion-searchbar (keypress)="keyPress($event)" placeholder="Procure por artista ou música" [formControl]="search" (ionClear)="fecharBusca()"> </ion-searchbar>
 
-    <div *ngIf="item">
+    <div *ngIf="searchItem">
         <ion-item *ngFor="let video of results | async" (click)="selecionarVideo(video)">
             <ion-label>{{video.snippet.title}}</ion-label>
         </ion-item>
     </div>
 
-    <ion-content class="cards-bg">
+    <ion-content class="cards-bg" *ngIf="showResult">
         <ion-card>
             <iframe width="100%" frameborder="0" height="185" [src]="('https://www.youtube.com/embed/' + _video.player) | safe"></iframe>
             <ion-card-content>
@@ -39,4 +39,11 @@
             </ion-row>
         </ion-card>
     </ion-content>
+
+    <ion-list>
+        <ion-item>
+
+
+        </ion-item>
+    </ion-list>
 </ion-content>

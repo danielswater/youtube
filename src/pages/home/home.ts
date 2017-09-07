@@ -1,12 +1,13 @@
 import { YoutubePlayer } from './model/youtube.model';
 import { Observable } from 'rxjs/Observable';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { YoutubeService } from './youtube';
 import { Component } from '@angular/core';
 import { NavController, Platform, AlertController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 declare var cordova: any;
 
@@ -20,10 +21,14 @@ export class HomePage {
 
 	search = new FormControl();
 	results: Observable<any>;
-	public item: boolean;
+	resultRelated: any;
+	public videosRelacionados: any[];
+	public searchItem: boolean;
+	public showResult: boolean = false;
 	private _video = new YoutubePlayer();
 	private link = "https://www.youtubeinmp3.com/fetch/?video=https://www.youtube.com/watch?v=";
 	storageDirectory: string = '';
+	
 
 	constructor(public platform: Platform, public alertCtrl: AlertController,
 		public navCtrl: NavController, public youtube: YoutubeService,
@@ -35,15 +40,21 @@ export class HomePage {
 	}
 
 	keyPress(ev) {
-		this.item = true;
+		this.searchItem = true;
 	}
 
 	selecionarVideo(video) {
-		this.item = false;
+		this.searchItem = false;
+		this.showResult = true;
 		this._video.player = video.id.videoId;
 		this._video.titulo = video.snippet.title;
 		this._video.descricao = video.snippet.description;
-		console.log(video)
+		this.youtube.videosRelacionados(video.id.videoId).subscribe(videos => {
+			this.videosRelacionados = videos;
+			console.log(this.videosRelacionados)
+		})
+		
+		
 	}
 
 	download() {
@@ -58,8 +69,6 @@ export class HomePage {
 
 			alertSuccess.present();
 
-			console.log(entry.toURL())
-
 		}, (error) => {
 			let alertFailure = this.alertCtrl.create({
 				title: `Download Failed!`,
@@ -73,6 +82,6 @@ export class HomePage {
 	}
 
 	fecharBusca() {
-		this.item = false;
+		this.searchItem = false;
 	}
 }
