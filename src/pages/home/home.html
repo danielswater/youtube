@@ -1,23 +1,23 @@
 <ion-header>
     <ion-navbar>
-
+        
         <ion-title>
             YouTube Search Download
         </ion-title>
-
+        
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-
+    
     <ion-searchbar (keypress)="keyPress($event)" placeholder="Procure por artista ou música" [formControl]="search" (ionClear)="fecharBusca()"> </ion-searchbar>
-
+    
     <div *ngIf="searchItem">
         <ion-item *ngFor="let video of results | async" (click)="selecionarVideo(video)">
             <ion-label>{{video.snippet.title}}</ion-label>
         </ion-item>
     </div>
-
+    
     <ion-content class="cards-bg" *ngIf="showResult">
         <ion-card>
             <iframe width="100%" frameborder="0" height="185" [src]="('https://www.youtube.com/embed/' + _video.player) | safe"></iframe>
@@ -38,12 +38,15 @@
                 </ion-col>
             </ion-row>
         </ion-card>
+        <ion-list *ngFor="let related of videosRelacionados">
+            <ion-item>
+                <ion-thumbnail item-start>
+                    <img src="{{related.snippet.thumbnails.default.url}}">
+                </ion-thumbnail>
+                <h3>{{related.snippet.title}}</h3>
+                <p>{{related.snippet.description}}</p>
+            </ion-item>
+        </ion-list>
     </ion-content>
-
-    <ion-list>
-        <ion-item>
-
-
-        </ion-item>
-    </ion-list>
+    
 </ion-content>
